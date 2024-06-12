@@ -1,0 +1,24 @@
+version: '3'
+
+tasks:
+  test:
+    cmds:
+      - pytest
+
+  format:
+    cmds:
+      - ruff check --fix-only --ignore COM819 src/ tests/
+      - ruff format src/ tests/
+
+  lint:ruff:
+    cmds:
+      - ruff check src/ tests/
+
+  lint:mypy:
+    cmds:
+      - mypy --pretty --show-error-context --show-error-code-links src/ tests/
+
+  lint:
+    cmds:
+      - task: lint:ruff
+      - task: lint:mypy

@@ -1,4 +1,4 @@
-name: PyPI Publishing
+name: PyPI
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: Publish release to PyPI
+    name: Publish
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -15,5 +15,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: pdm-project/setup-pdm@v3
-      - name: Publish package distributions to PyPI
+      - name: Publish package to PyPI
         run: pdm publish
